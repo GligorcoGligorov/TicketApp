@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Domain.DTO.CartDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h1 class="h1">All orders</h1>
+    @foreach (var order in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Order number: @order.Id</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Customer: @order.UserId</h6>
+                <p class="card-text">Total price: @order.TotalPrice</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-controller="Order" asp-action="CreateInvoice" asp-route-id="@order.Id">Get Invoice</a>
+            </div>
+        </div>
+        
+    }
+</div>
+
+<div class="card bg-dark text-white">
+    <img class="card-img" height="300px" src="https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?t=st=1687779118~exp=1687779718~hmac=6824d5c7910cdd06ec02f07bce626453f46c4b33d2a46ee4a939ca80e1f202af" alt="Card image">
+    <div class="card-img-overlay">
+    </div>
+</div>

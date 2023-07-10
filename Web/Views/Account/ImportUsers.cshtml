@@ -1,0 +1,16 @@
+﻿@* @model object *@
+@{
+    ViewData["Title"] = "ImportUsers";
+}
+
+<div class="card bg-dark text-white">
+      <img class="card-img" height="300px" src="https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?t=st=1687779118~exp=1687779718~hmac=6824d5c7910cdd06ec02f07bce626453f46c4b33d2a46ee4a939ca80e1f202af" alt="Card image">
+      <div class="card-img-overlay">
+      </div>
+    </div>
+<div class="container">
+    <form asp-controller="Account" asp-action="ImportUsers" enctype="multipart/form-data" method="post">
+        <input type="file" name="file" class="form-control"/>
+        <button type="submit" class="btn btn-outline-success">Import Excel</button>
+    </form>
+</div>

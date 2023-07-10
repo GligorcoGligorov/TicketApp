@@ -1,0 +1,38 @@
+﻿@model Domain.DTO.TicketDto
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label for="movie">Movie</label>
+            <select class="form-control" id="movie" name="selectedmovie">
+                @foreach (var item in Model.MovieOptions)
+                {
+                    <option value="@item.Id" selected="@item.Id.Equals(Model.SelectedMovie)">@item.Title</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="seat">Seat</label>
+            <input type="number" min="1" max="200" class="form-control" id="seat" name="seat" placeholder="Seat"
+                   value="@Model.Seat">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" min="1"  class="form-control" id="price" name="price" placeholder="Price"
+                   value="@Model.Price">
+        </div>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="datetime-local" class="form-control" id="date" name="date" placeholder="Date"
+                   value="@Model.Date">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="card bg-dark text-white">
+    <img class="card-img" height="300px" src="https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?t=st=1687779118~exp=1687779718~hmac=6824d5c7910cdd06ec02f07bce626453f46c4b33d2a46ee4a939ca80e1f202af" alt="Card image">
+    <div class="card-img-overlay">
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model Domain.DTO.UserLoginDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="">
+    <h1 class="text-primary">Login</h1>
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <div class="logindiv">
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label asp-for="@Model.Email" class="col-lg-3 control-label text-info"></label>
+                    <div class="col-lg-9">
+                        <input asp-for="@Model.Email" placeholder="Email" class="form-control form-control-lg" />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label asp-for="@Model.Password" class="col-lg-3 control-label text-info"></label>
+                    <div class="col-lg-9">
+                        <input asp-for="@Model.Password" type="password" placeholder="Password" class="form-control form-control-lg" />
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-success btn-lg">Login</button>
+                        <a asp-action="Register" asp-controller="Account" class="text-info">Don't have an account? Click to Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <div class="card bg-dark text-white">
+      <img class="card-img" height="300px" src="https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?t=st=1687779118~exp=1687779718~hmac=6824d5c7910cdd06ec02f07bce626453f46c4b33d2a46ee4a939ca80e1f202af" alt="Card image">
+      <div class="card-img-overlay">
+      </div>
+    </div>
+</div>

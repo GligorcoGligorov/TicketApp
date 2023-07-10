@@ -1,0 +1,54 @@
+﻿@model List<Domain.MovieTicket>
+@{
+    ViewData["Title"] = "All tickets";
+}
+<div class="container">
+
+    <a asp-controller="Ticket" asp-action="Create" class="btn btn-info mb-5">Add new ticket</a>
+    <form method="get" class="mb-2">
+        <input class="form-control mb-1" type="date" name="date" placeholder="Filter by Date">
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    @if (User.IsInRole("Admin"))
+    {
+        <form asp-controller="Ticket" asp-action="ExportAllTickets">
+            <h3 class="h3">Export all tickets by genre</h3>
+            <label for="genre" class="form-label">Genre</label>
+            <input type="text" name="genre" id="genre" class="form-control"/>
+            <button type="submit" class="btn btn-outline-danger mb-5">Export all tickets</button>
+        </form>
+    }
+    @foreach (var ticket in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>@ticket.Movie.Title</h3>
+            </div>
+            <div class="card-body">
+                <p class="font-weight-bold">Price: @ticket.Price</p>
+                <p>Date: @ticket.Date</p>
+                <p>Seat #: @ticket.Seat</p>
+                <p>Movie Duration @ticket.Movie.Duration</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-start">
+                <div>
+                    <a class="btn btn-outline-primary" asp-controller="Ticket" asp-action="Edit" asp-route-id="@ticket.Id">Edit</a>
+                    <a class="btn btn-danger" asp-controller="Ticket" asp-action="Delete" asp-route-id="@ticket.Id">Delete</a>
+                </div>
+                <div>
+                    <form asp-controller="Cart" asp-action="AddToCart">
+                        <input type="hidden" name="id" value="@ticket.Id" />
+                        <input class="form-control" type="number" min="1" max="10" name="quantity" value="1" />
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="card bg-dark text-white">
+    <img class="card-img" height="300px" src="https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?t=st=1687779118~exp=1687779718~hmac=6824d5c7910cdd06ec02f07bce626453f46c4b33d2a46ee4a939ca80e1f202af" alt="Card image">
+    <div class="card-img-overlay">
+    </div>
+</div>
